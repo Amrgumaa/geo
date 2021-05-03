@@ -18,6 +18,15 @@
                     <br>
                     jamesmill
                     {{ Timezone::convertToLocal(now(), 'Y-m-d G:i', true) }}
+                    <br>
+                    <select class="form-control select2" name="timezone" id="timezone">
+                        @foreach(timezone_identifiers_list() as $timezone)
+                        <option {{ (auth()->user()->timezone) == $timezone ? 'selected' : '' }}>{{ $timezone }}
+                        </option>
+                        @endforeach
+                    </select>
+                    {{ auth()->user()->timezone}}
+
                 </div>
             </div>
         </div>
