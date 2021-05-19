@@ -96,7 +96,7 @@ class DashboardController extends Controller
         $user = User::find(Auth::user()->id);
         $user->timezone = $request->timezone;
         $user->save();
-        flash('Welcome Aboard!');
+
         return redirect ('dashboard');
 
         // return view('dashboard', array('user' => Auth::user()));
