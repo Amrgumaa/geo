@@ -13,19 +13,31 @@
                     <br>
                     local
                     UTC {{ date('D, d-F-y H:i') }}
-
-
                     <br>
                     jamesmill
                     {{ Timezone::convertToLocal(now(), 'Y-m-d G:i', true) }}
                     <br>
-                    <select class="form-control select2" name="timezone" id="timezone">
-                        @foreach(timezone_identifiers_list() as $timezone)
-                        <option {{ (auth()->user()->timezone) == $timezone ? 'selected' : '' }}>{{ $timezone }}
-                        </option>
-                        @endforeach
-                    </select>
+                    jamesmill location timezone
                     {{ auth()->user()->timezone}}
+                    <br>
+                    <form role="form" class="card-body" action="{{route('timezone.update'),auth()->user()->id}}"
+                        method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('Post')
+                        <div class="card-body ">
+                            <select class="form-control select2" name="timezone" id="timezone">
+                                @foreach(timezone_identifiers_list() as $timezone)
+                                <option {{ (auth()->user()->timezone) == $timezone ? 'selected' : '' }}>{{ $timezone }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <button type="submit" class="btn btn-info">Update Record</button></a>
+                        </div>
+
+                    </form>
+
+                    <br>
+
 
                 </div>
             </div>

@@ -16,6 +16,10 @@ class AddTimezoneColumnToUsersTable extends Migration
             Schema::table('users', function (Blueprint $table) {
                 $table->string('timezone')->after('remember_token')->nullable();
             });
+            Schema::create('timezone_user', function (Blueprint $table) {
+            $table->integer('timezone_id');
+            $table->integer('user_id');
+        });
         }
     }
 

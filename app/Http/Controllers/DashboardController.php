@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\test;
+use App\Models\dashboard;
+use App\Models\timezone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
-class TestController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +16,9 @@ class TestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $ip = request()->header('X-Forwarded-For');
-        $data= geoip()->getLocation($ip);
-        dd($data);
+    {  $time = timezone::all();
+       $user = User::find(Auth::user()->id);
+        return view(('test'), compact(['time','user',]));
     }
 
     /**
@@ -43,10 +45,10 @@ class TestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\test  $test
+     * @param  \App\Models\dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(test $test)
+    public function show(dashboard $dashboard)
     {
         //
     }
@@ -54,10 +56,10 @@ class TestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\test  $test
+     * @param  \App\Models\dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(test $test)
+    public function edit(dashboard $dashboard)
     {
         //
     }
@@ -66,10 +68,10 @@ class TestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\test  $test
+     * @param  \App\Models\dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, test $test)
+    public function update(Request $request, dashboard $dashboard)
     {
         //
     }
@@ -77,11 +79,26 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\test  $test
+     * @param  \App\Models\dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(test $test)
+    public function destroy(dashboard $dashboard)
     {
         //
+    }
+
+    public function timezone_update(request $request ,User $user)
+    {
+        $request->validate([
+            'timezone' => 'required',
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $user->timezone = $request->timezone;
+        $user->save();
+        flash('Welcome Aboard!');
+        return redirect ('dashboard');
+
+        // return view('dashboard', array('user' => Auth::user()));
     }
 }
