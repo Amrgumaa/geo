@@ -15,8 +15,8 @@ class GeoipController extends Controller
      */
     public function index()
     {
-        $ip = request()->header('X-Forwarded-For');
-        $data= geoip()->getLocation($ip);
+        // $ip = request()->header('X-Forwarded-For');
+        $data= geoip()->getLocation();
         dd($data);
     }
 
