@@ -26,6 +26,11 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth']);
 Route::post('/dashboard/timzone_update', [DashboardController::class, 'timezone_update'])->middleware(['auth'])->name('timezone.update');
 
+// Route::get('/dashboard/t', [GeoipController::class, 'trackUserActivity'])->middleware(['auth'])->name('trackUser_Activity');
+
+
+
+
 
 
 

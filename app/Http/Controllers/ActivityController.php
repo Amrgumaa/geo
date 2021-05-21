@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\geoip;
+use App\Models\Activity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-
-class GeoipController extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,7 @@ class GeoipController extends Controller
      */
     public function index()
     {
-        // $ip = request()->header('X-Forwarded-For');
-
-
-        $data =geoip()->getLocation();
-        dd($data);
+        //
     }
 
     /**
@@ -41,16 +35,16 @@ class GeoipController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\geoip  $geoip
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(geoip $geoip)
+    public function show(Activity $activity)
     {
         //
     }
@@ -58,10 +52,10 @@ class GeoipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\geoip  $geoip
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(geoip $geoip)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -70,10 +64,10 @@ class GeoipController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\geoip  $geoip
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, geoip $geoip)
+    public function update(Request $request, Activity $activity)
     {
         //
     }
@@ -81,19 +75,11 @@ class GeoipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\geoip  $geoip
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(geoip $geoip)
+    public function destroy(Activity $activity)
     {
         //
     }
-    public function trackUserActivity(Request $request,){
-
-       $geo = Geoip::create([
-            'user_id' => Auth::id(),
-            'ip_address' => $request->getClientIP(),
-        ]);
-
-      }
 }

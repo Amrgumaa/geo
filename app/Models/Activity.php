@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class geoip extends Model
+class Activity extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'user_id', 'ip_address','url','user_name','email','ip',
         'iso_code' ,
