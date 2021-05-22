@@ -15,25 +15,10 @@ class GeoipController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(request $request)
-    {
-        $ip = ('134.201.250.155');
-        $access_key = '8090a7ae09635e63ec56924466d7381a';
+    {  $iso_code =('eg');
+       $egypt = country($iso_code)->getLocales()[0];
 
-        // Initialize CURL:
-        $ch = curl_init('http://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // Store the data:
-        $json = curl_exec($ch);
-        curl_close($ch);
-
-        // Decode JSON response:
-        $api_result = json_decode($json, true);
-
-        // Output the "id" object from the "timezone" field
-        dd($api_result['location']['country_flag']);
-
-
+        dd($egypt);
         // //jenssegers/agent test
         // $agent = new Agent();
         //     //    $device = $agent->device();

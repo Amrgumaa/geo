@@ -26,6 +26,13 @@ class CreateActivitiesTable extends Migration
             $table->string('state');
             $table->string('state_name');
             $table->string('postal_code');
+            $table->string('country_flag');
+            $table->string('language');
+            $table->string('language_local');
+            $table->string('calling_code');
+            $table->string('region');
+            $table->string('sub_region');
+            $table->string('world_region');
             $table->string('lat');
             $table->string('lon');
             $table->string('timezone');

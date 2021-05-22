@@ -29,5 +29,12 @@ class Activity extends Model
        'robot_name',
        'is_robot',
        'device',
+       'country_flag',
+        'language_local' ,
+        'calling_code' ,
+        'region' ,
+        'sub_region' ,
+        'world_region' ,
+        'language',
     ];
 }
