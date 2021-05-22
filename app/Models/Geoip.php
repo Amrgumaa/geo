@@ -24,4 +24,5 @@ class geoip extends Model
         'currency',
         'default'  ,
     ];
+
 }

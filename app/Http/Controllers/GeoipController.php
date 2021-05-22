@@ -16,20 +16,37 @@ class GeoipController extends Controller
      */
     public function index()
     {
-        //jenssegers/agent test
-        $agent = new Agent();
-            //    $device = $agent->device();
-               $device = $agent->isRobot();
-            //  $platform = $agent->platform();
-            //  $platformversion = $agent->version($platform);
-            //  $browser = $agent->browser();
-            //  $browserversion = $agent->version($browser);
-            //  $robot = $agent->robot();
-               dd($device);
-            //Tronan GEOIP test
-            // $ip = request()->header('X-Forwarded-For');
-           // $data =geoip()->getLocation();
-            // dd($data);
+        $ip = \Request::ip();
+        $access_key = '8090a7ae09635e63ec56924466d7381a';
+
+        // Initialize CURL:
+        $ch = curl_init('https://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Store the data:
+        $json = curl_exec($ch);
+        curl_close($ch);
+
+        // Decode JSON response:
+        $api_result = json_decode($json, true);
+
+        // Output the "id" object from the "timezone" field
+        dd($api_result);
+
+        // //jenssegers/agent test
+        // $agent = new Agent();
+        //     //    $device = $agent->device();
+        //        $device = $agent->isRobot();
+        //     //  $platform = $agent->platform();
+        //     //  $platformversion = $agent->version($platform);
+        //     //  $browser = $agent->browser();
+        //     //  $browserversion = $agent->version($browser);
+        //     //  $robot = $agent->robot();
+        //        dd($device);
+        //     //Tronan GEOIP test
+        //     // $ip = request()->header('X-Forwarded-For');
+        //    // $data =geoip()->getLocation();
+        //     // dd($data);
     }
 
     /**
