@@ -8,7 +8,9 @@ use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Torann\GeoIP\GeoIP;
 use Jenssegers\Agent\Agent;
-use \Rinvex\Country\Country;
+
+
+
 
 class AddToLog
 {
@@ -27,7 +29,7 @@ class AddToLog
       $platform= $agent->platform();
       $browser = $agent->browser();
       $isocode= geoip()->getLocation()->toArray()['iso_code'];
-      $country = Country($isocode);
+      $country = country($isocode);
 
          if(auth()->user()) {
         Activity::create([
