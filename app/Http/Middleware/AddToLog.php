@@ -49,7 +49,8 @@ class AddToLog
             'platformversion' =>$request->agent()->version('platform'),
             'browser' =>$request->agent()->browser(),
            'browserversion' => $request->agent()->version('browser'),
-           'robot' => $request->agent()->robot(),
+           'is_robot'=>$agent->isRobot(),
+           'robot_name' =>$agent->robot(),
         ]);
       }
         else {
@@ -75,7 +76,8 @@ class AddToLog
                'platformversion' =>$agent->version($platform),
                'browser' =>$agent->browser(),
               'browserversion' => $agent->version($browser),
-              'robot' => $agent->robot(),
+              'is_robot'=>$agent->isRobot(),
+              'robot_name' =>$agent->robot(),
                 ]);
 
         }

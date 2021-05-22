@@ -37,7 +37,8 @@ class CreateActivitiesTable extends Migration
             $table->string('platformversion');
             $table->string('browser');
             $table->string('browserversion');
-            $table->string('robot');
+            $table->boolean('is_robot');
+            $table->string('robot_name');
             $table->timestamps();
         });
     }

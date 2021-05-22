@@ -26,7 +26,8 @@ class Activity extends Model
        'platformversion' ,
        'browser' ,
        'browserversion',
-       'robot',
-       'device'
+       'robot_name',
+       'is_robot',
+       'device',
     ];
 }

@@ -16,20 +16,20 @@ class GeoipController extends Controller
      */
     public function index()
     {
-
+        //jenssegers/agent test
         $agent = new Agent();
-
-
-             $platform = $agent->platform();
-            //  $version = $agent->version($platform);
-            $device = $agent->device();
-            // $browser = $agent->browser();
-            // $version = $agent->version($browser);
-            // $robot = $agent->robot();
-            dd($device);
-        // $ip = request()->header('X-Forwarded-For');
-        // $data =geoip()->getLocation();
-        // dd($data);
+            //    $device = $agent->device();
+               $device = $agent->isRobot();
+            //  $platform = $agent->platform();
+            //  $platformversion = $agent->version($platform);
+            //  $browser = $agent->browser();
+            //  $browserversion = $agent->version($browser);
+            //  $robot = $agent->robot();
+               dd($device);
+            //Tronan GEOIP test
+            // $ip = request()->header('X-Forwarded-For');
+           // $data =geoip()->getLocation();
+            // dd($data);
     }
 
     /**
