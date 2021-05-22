@@ -8,6 +8,7 @@ use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Torann\GeoIP\GeoIP;
 use Jenssegers\Agent\Agent;
+
 class AddToLog
 {
     /**
@@ -24,7 +25,8 @@ class AddToLog
       $agent=new Agent();
       $platform= $agent->platform();
       $browser = $agent->browser();
-      $isocode=geoip()->getLocation()->toArray()['iso_code'];
+      $isocode= geoip()->getLocation()->toArray()['iso_code'];
+      $country = country($isocode);
 
          if(auth()->user()) {
         Activity::create([
@@ -50,13 +52,13 @@ class AddToLog
               'browserversion' => $agent->version($browser),
               'is_robot'=>$agent->isRobot(),
               'robot_name' =>$agent->robot(),
-              'country_flag' =>country($isocode)->getEmoji(),
-              'language_local' =>country($isocode)->getLocales()[0],
-              'language' =>country($isocode)->getWorldRegion(),
-              'calling_code' =>country($isocode)->getCallingCode(),
-              'region' =>country($isocode)->getRegion(),
-              'sub_region' =>country($isocode)->getSubregion(),
-              'world_region' =>country($isocode)->getWorldRegion(),
+              'country_flag' =>$country->getEmoji(),
+              'language_local' =>$country->getLocales()[0],
+              'language' =>$country->getWorldRegion(),
+              'calling_code' =>$country->getCallingCode(),
+              'region' =>$country->getRegion(),
+              'sub_region' =>$country->getSubregion(),
+              'world_region' =>$country->getWorldRegion(),
 
         ]);
       }
@@ -85,13 +87,13 @@ class AddToLog
               'browserversion' => $agent->version($browser),
               'is_robot'=>$agent->isRobot(),
               'robot_name' =>$agent->robot(),
-              'country_flag' =>country($isocode)->getEmoji(),
-              'language_local' =>country($isocode)->getLocales()[0],
-              'language' =>country($isocode)->getLanguage(),
-              'calling_code' =>country($isocode)->getCallingCode(),
-              'region' =>country($isocode)->getRegion(),
-              'sub_region' =>country($isocode)->getSubregion(),
-              'world_region' =>country($isocode)->getWorldRegion(),
+              'country_flag' =>$country->getEmoji(),
+              'language_local' =>$country->getLocales()[0],
+              'language' =>$country->getLanguage(),
+              'calling_code' =>$country->getCallingCode(),
+              'region' =>$country->getRegion(),
+              'sub_region' =>$country->getSubregion(),
+              'world_region' =>$country->getWorldRegion(),
 
                 ]);
 
