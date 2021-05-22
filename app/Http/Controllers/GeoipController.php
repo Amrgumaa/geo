@@ -114,12 +114,12 @@ class GeoipController extends Controller
     {
         //
     }
-    public function trackUserActivity(Request $request,){
+//     public function trackUserActivity(Request $request,){
 
-    //    $geo = Geoip::create([
-    //         'user_id' => Auth::id(),
-    //         'ip_address' => $request->getClientIP(),
-    //     ]);
+//     //    $geo = Geoip::create([
+//     //         'user_id' => Auth::id(),
+//     //         'ip_address' => $request->getClientIP(),
+//     //     ]);
 
-      }
+//       }
 }
