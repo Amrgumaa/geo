@@ -22,5 +22,11 @@ class Activity extends Model
         'continent' ,
         'currency',
         'default'  ,
+        'platform' ,
+       'platformversion' ,
+       'browser' ,
+       'browserversion',
+       'robot',
+       'device'
     ];
 }

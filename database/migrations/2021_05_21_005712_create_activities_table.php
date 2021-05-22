@@ -32,6 +32,12 @@ class CreateActivitiesTable extends Migration
             $table->string('continent');
             $table->string('currency');
             $table->boolean('default');
+            $table->string('device');
+            $table->string('platform');
+            $table->string('platformversion');
+            $table->string('browser');
+            $table->string('browserversion');
+            $table->string('robot');
             $table->timestamps();
         });
     }

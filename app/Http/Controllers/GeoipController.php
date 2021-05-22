@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\geoip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Jenssegers\Agent\Agent;
 
 class GeoipController extends Controller
 {
@@ -16,11 +16,20 @@ class GeoipController extends Controller
      */
     public function index()
     {
+
+        $agent = new Agent();
+
+
+             $platform = $agent->platform();
+            //  $version = $agent->version($platform);
+            $device = $agent->device();
+            // $browser = $agent->browser();
+            // $version = $agent->version($browser);
+            // $robot = $agent->robot();
+            dd($device);
         // $ip = request()->header('X-Forwarded-For');
-
-
-        $data =geoip()->getLocation();
-        dd($data);
+        // $data =geoip()->getLocation();
+        // dd($data);
     }
 
     /**
