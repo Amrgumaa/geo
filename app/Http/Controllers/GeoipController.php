@@ -16,7 +16,7 @@ class GeoipController extends Controller
      */
     public function index(request $request)
     {
-        $ip = $request->ip();
+        $ip = ('134.201.250.155');
         $access_key = '8090a7ae09635e63ec56924466d7381a';
 
         // Initialize CURL:
@@ -31,7 +31,8 @@ class GeoipController extends Controller
         $api_result = json_decode($json, true);
 
         // Output the "id" object from the "timezone" field
-        dd($api_result);
+        dd($api_result['location']['country_flag']);
+
 
         // //jenssegers/agent test
         // $agent = new Agent();
@@ -114,12 +115,5 @@ class GeoipController extends Controller
     {
         //
     }
-//     public function trackUserActivity(Request $request,){
 
-//     //    $geo = Geoip::create([
-//     //         'user_id' => Auth::id(),
-//     //         'ip_address' => $request->getClientIP(),
-//     //     ]);
-
-//       }
 }
