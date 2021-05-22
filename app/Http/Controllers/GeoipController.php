@@ -14,13 +14,13 @@ class GeoipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
-        $ip = \Request::ip();
+        $ip = $request->ip();
         $access_key = '8090a7ae09635e63ec56924466d7381a';
 
         // Initialize CURL:
-        $ch = curl_init('https://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
+        $ch = curl_init('http://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         // Store the data:
