@@ -8,6 +8,7 @@ use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Torann\GeoIP\GeoIP;
 use Jenssegers\Agent\Agent;
+use \Rinvex\Country\Country;
 
 class AddToLog
 {
@@ -26,7 +27,7 @@ class AddToLog
       $platform= $agent->platform();
       $browser = $agent->browser();
       $isocode= geoip()->getLocation()->toArray()['iso_code'];
-      $country = country($isocode);
+      $country = Country($isocode);
 
          if(auth()->user()) {
         Activity::create([
@@ -52,8 +53,8 @@ class AddToLog
               'browserversion' => $agent->version($browser),
               'is_robot'=>$agent->isRobot(),
               'robot_name' =>$agent->robot(),
-              'country_flag' =>$country->getEmoji(),
-              'language_local' =>$country->getLocales()[0],
+              'country_flag' =>country()->getEmoji(),
+              'language_local' =>country()->getLocales()[0],
               'language' =>$country->getWorldRegion(),
               'calling_code' =>$country->getCallingCode(),
               'region' =>$country->getRegion(),
